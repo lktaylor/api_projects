@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'json'
+require 'forecast_io'
 
 # If you experience an error relating to SSL,
 #   uncomment the following two lines:
@@ -15,8 +16,23 @@ url_safe_address = URI.encode(the_address)
 
 # Your code goes below.
 
+ForecastIO.api_key = '1a18cf7e615cf03b381a4dafaaaffd78'
+ForecastIO.forecast(latitude, longitude, options = {jsonp})
+
+url = "https://api.forecast.io/forecast/1a18cf7e615cf03b381a4dafaaaffd78/#{url_safe_address}"
+raw_data = open(url).read
+parsed_data = JSON.parse(raw_data)
+forecast = ForecastIO.forecast(37.8267, -122.423)
+
+'the_latitude' = '41.78'
+'the_longitude' = '-87.59'
+'the_address' = '5708 S Woodlawn Ave'
+'the_temperature' = #{url_safe_address}
+'the_hour_outlook' =
+'the_day_outlook' =
+
 # Ultimately, we want the following line to work when uncommented:
 
-# puts "The current temperature at #{the_address} is #{the_temperature} degrees."
-# puts "The outlook for the next hour is: #{the_hour_outlook}"
-# puts "The outlook for the next day is: #{the_day_outlook}"
+puts "The current temperature at #{the_address} is #{the_temperature} degrees."
+puts "The outlook for the next hour is: #{the_hour_outlook}"
+puts "The outlook for the next day is: #{the_day_outlook}"
