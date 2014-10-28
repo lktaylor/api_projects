@@ -4,8 +4,8 @@ require 'json'
 # If you experience an error relating to SSL,
 #   uncomment the following two lines:
 
-# require 'openssl'
-# OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+require 'openssl'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 puts "What is the address you would like to find the latitude and longitude of?"
 
@@ -20,6 +20,8 @@ url_safe_address = URI.encode(the_address)
 url = "http://maps.googleapis.com/maps/api/geocode/json?address=#{url_safe_address}"
 raw_data = open(url).read
 parsed_data = JSON.parse(raw_data)
+latitude = parsed_data["results"][0]["geometry"]["location"]["latitude"]
+longitude = parsed_data["results"][0]["geometry"]["location"]["longitude"]
 
 'the_latitude' = '41.7896234'
 'the_longitude' = '-87.5964137'
