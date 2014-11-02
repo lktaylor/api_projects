@@ -20,13 +20,14 @@ url_safe_address = URI.encode(the_address)
 url = "http://maps.googleapis.com/maps/api/geocode/json?address=#{url_safe_address}"
 raw_data = open(url).read
 parsed_data = JSON.parse(raw_data)
-latitude = parsed_data["results"][0]["geometry"]["location"]["latitude"]
-longitude = parsed_data["results"][0]["geometry"]["location"]["longitude"]
+latitude = parsed_data["results"][0]["geometry"]["location"]["lat"]
+longitude = parsed_data["results"][0]["geometry"]["location"]["lng"]
 
-'the_latitude' = '41.7896234'
-'the_longitude' = '-87.5964137'
-'the_address' = '5708 S Woodlawn Ave'
+# puts parsed_data
+# puts the_address
+# puts latitude
+# puts longitude
 
 # Ultimately, we want the following line to work when uncommented:
 
-puts "The latitude of #{the_address} is #{the_latitude} and the longitude is #{the_longitude}."
+puts "The latitude of #{the_address} is #{latitude} and the longitude is #{longitude}."
