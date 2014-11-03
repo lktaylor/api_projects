@@ -23,11 +23,6 @@ parsed_data = JSON.parse(raw_data)
 latitude = parsed_data["results"][0]["geometry"]["location"]["lat"]
 longitude = parsed_data["results"][0]["geometry"]["location"]["lng"]
 
-# puts parsed_data
-# puts the_address
-# puts latitude
-# puts longitude
-
 # Ultimately, we want the following line to work when uncommented:
 
 puts "The latitude of #{the_address} is #{latitude} and the longitude is #{longitude}."
